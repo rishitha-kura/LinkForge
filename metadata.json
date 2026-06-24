@@ -1,0 +1,6 @@
+{
+  "name": "URL Shortener Service",
+  "description": "A powerful glassmorphic URL Shortener Service called LinkForge, featuring rapid link generation, persistence, and deep customization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
