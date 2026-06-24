@@ -173,11 +173,19 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
-    });
+    const distPath = path.resolve(process.cwd(), "dist");
+
+app.use(express.static(distPath, {
+  index: false
+}));
+
+app.get("*", (req, res) => {
+  if (req.path.startsWith("/assets/")) {
+    return res.status(404).end();
+  }
+
+  res.sendFile(path.join(distPath, "index.html"));
+});
   }
 
   // Bind to 0.0.0.0 and process on port 3000
